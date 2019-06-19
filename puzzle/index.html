@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+	<button id="btn" onclick="RandomImg()">Random</button>
+               
+	<div class="puzzle">
+		<div class="padding_div">	<!--img part1 with padding-->
+    		<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part1" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+    	</div>    
+    
+	
+		<div class="padding_div">	<!--img part2 with padding-->
+    		<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part2" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+    	</div>   
+
+
+		<div class="padding_div">	<!--img part3 with padding-->
+    		<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part3" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+		</div>  
+	
+    
+    	<div class="padding_div">	<!--img part3 with padding-->
+    		<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part4" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+    	</div>    
+     
+     	<div class="padding_div">    
+        	<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part5" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+		</div>  
+    
+    	<div class="padding_div">    
+        	<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part6" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+		</div>
+        
+        <div class="padding_div">    
+        	<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part7" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+		</div>
+        
+        <div class="padding_div">    
+        	<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part8" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+		</div>
+        
+        <div class="padding_div">    
+        	<div class="imgdiv">    <!--here is the 1/9 part of the img-->
+    			<img id="part9" src="https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" width="600px" height="600px" onmouseenter="check_if_hover(this)" onmousedown="mousedown(this)" onmouseup="mouseup()"/>
+    		</div>
+		</div>
+        
+        
+	</div>    						<!-- end of puzzle -->
+<p id="test">
+    
+</p>
+     	
+		
+<script>
+var arr=[1,2,3,4,5,6,7,8,9];
+var i=1;
+for( i = 1;i<=8;i++){
+	var x = Math.floor(Math.random() * 8);  /*x= 0~8 random */
+    var temp = arr[x];                      /*temp=arr[random]*/
+    arr[x]=arr[i];
+    arr[i]=temp;                            /*swap(arr[x],arr[i])*/
+}
+/*now the elements of arr are randomly stored*/
+var reservedimg,keydiv,keyimg;
+function RandomImg(){
+    
+	var j,k;
+   	for(j=1;j<=9;j++){
+    	document.getElementById("part"+j).id="pt"+j;
+    }
+    for(k=0;k<=8;k++){
+    	document.getElementById("pt"+(k+1)).id="part"+arr[k]; 
+    }
+    keyimg = document.getElementById("part"+arr[ arr[0] ]);
+    keyimg.id="blank";
+    
+    
+         
+    keydiv = document.createElement("div");			/*create reserved img div*/
+    keydiv.setAttribute("id","key");            	/*set id as "key"*/
+       
+    document.body.appendChild(keydiv);
+    reservedimg = document.createElement("img");  	/*create element for reserved img*/
+    reservedimg.setAttribute("id","part"+arr[ arr[0] ]);   /*reserved img is "part"arr[0]*/
+    reservedimg.setAttribute("onclick","insertreservedimg()");
+    reservedimg.setAttribute("src","https://images.unsplash.com/photo-1495209595823-a10f28b8cba0?ixlib=rb-	1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80");
+    reservedimg.style.width="600px";
+    reservedimg.style.height="600px";
+    keydiv.appendChild(reservedimg);   
+}
+ 		
+ /*                                SWAP IMAGE                                  */ 				
+var n,imghovered,imgchosen,clicked,xid,dragstart=true;                           /*var ondragstart can't be used*/
+		
+function mousedown(x) {
+    dragstart=true;
+  	for(n=0;n<=8;n++){
+	   if(document.images[n].id==x.id){ imgchosen=n;  }				/*determine chosen img is no?*/
+    }
+      clicked=x.id; /*clicked=mousedown id*/
+          
+}
+function check_if_hover(x) {
+    for(n=0;n<=8;n++){
+		if(document.images[n].id==x.id)
+    		{ imghovered=n; }/*hovered img is no? img*/
+    }	
+	switch(imgchosen%3){/*已點選的img在九宮格是第幾行*/
+		case 0:         /*第一行*/
+        	if(((imgchosen-3== imghovered) || (imgchosen+1==imghovered) || (imgchosen+3==imghovered))&&(dragstart==true)){
+            /*          與上交換                        與右交換                        與下交換                             */
+                xid=x.id;
+                document.getElementById(clicked).id=xid;
+                x.id=clicked;                            
+                mouseup();                
+                checkPuzzle(0);
+            }
+            break;
+        case 1:
+        	if( ((imgchosen-3==imghovered)||(imgchosen+3==imghovered)||(imgchosen-1==imghovered)||(imgchosen+1==imghovered) )&&(dragstart==true)){
+            	xid=x.id;
+                document.getElementById(clicked).id=xid;
+                x.id=clicked;                            
+                mouseup();
+                checkPuzzle(1);                 
+            }
+            break;
+        case 2:
+        	if(( (imgchosen-3==imghovered)|| (imgchosen-1==imghovered) || (imgchosen+3==imghovered) )&& (dragstart==true)){
+            	xid=x.id;
+                document.getElementById(clicked).id=xid;
+                x.id=clicked;                   
+                mouseup();
+                checkPuzzle(2);                
+            }             
+            break;
+	}
+}	    
+
+function mouseup(){
+	dragstart=false;
+}
+function insertreservedimg(){    
+    document.getElementById("blank").id=reservedimg.id;
+    reservedimg.id="none";
+    reservedimg.parentElement.removeChild(reservedimg);
+    checkPuzzle(0);
+}
+function CheckColumn(ColumnNo){
+    
+    var row0=document.images[ColumnNo].id;  /*puzzle[0][ColumnNo] id*/
+    var row1=document.images[ColumnNo+3].id;/*puzzle[1][ColumnNo] id*/
+    var row2=document.images[ColumnNo+6].id;/*puzzle[2][ColumnNo] id*/ 
+    if(row0==("part"+ (ColumnNo+1) )){
+        if(row1==("part"+ (ColumnNo+4)) ){
+            if(row2==("part"+ (ColumnNo+7)) ){
+                return true;/*Column complete*/
+            }
+        }
+    }
+   
+        
+}
+function checkPuzzle(col){  
+    if( CheckColumn(col)==true ){/*check whether col is true(completed)*/        
+        if( CheckColumn( (col+1)%3 )==true ){            
+            if(CheckColumn( (col+2)%3 )==true ){
+                alert("Complete!!");
+            }
+        }
+    }
+}
+
+ 
+   
+ 	
+
+</script>
+
+</body>
+</html>

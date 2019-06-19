@@ -1,0 +1,102 @@
+	#btn{
+    	position:relative;
+        width:150px;
+        height:50px;
+        float:right;
+        right:10%;
+        top:90px;
+    }
+	.puzzle{
+    	
+    	width:630px;				
+        height:630px;
+        padding:5px;
+        background-color:red;
+    }
+	.padding_div{
+    	
+        float:left;/*原本每個切割好的照片用display:inline-block，但inline-block瀏覽器會自動在兩個block加上4px間格，		google後建議解法為float:left，但要注意排版可能會跑掉，需用clear*/
+    	width:200px;
+        height:200px;
+        padding:5px;        
+        background-color:black;
+    }
+    
+	.imgdiv{
+    position:fixed;/*先不定位移量 因為每個part位移量不一樣*/
+    
+       display:inline-block;
+    	
+        margin:0px;
+       background:green;
+    }
+    div>img{
+    	position: absolute;     /*because img using clip,otherwise clip won't work*/
+    }
+	#part1{
+    	clip: rect(0px,200px,200px,0px);
+        background:green;               
+    }
+    #part2{
+    	clip: rect(0px,400px,200px,200px);
+        left:-200px;             
+    }
+    #part3{
+    	clip: rect(0px,600px,200px,400px);
+        left:-400px;    
+    }
+    #part4{
+    	clip: rect(200px,200px,400px,0px);
+        background:green;
+        top:-200px;
+        
+    }
+    #part5{
+    	clip: rect(200px,400px,400px,200px);
+        background:green;
+        top:-200px;
+        left:-200px;
+        
+    }
+     #part6{
+    	clip: rect(200px,600px,400px,400px);
+        background:green;
+        top:-200px;
+        left:-400px;
+        
+    }
+    #part7{
+    	clip: rect(400px,200px,600px,0px);
+        background:green;
+        top:-400px;        
+    }
+    #part8{
+    	clip: rect(400px,400px,600px,200px);
+        background:green;
+        top:-400px;
+        left:-200px;
+        
+    }
+    #part9{
+    	clip: rect(400px,600px,600px,400px);
+        background:green;
+        top:-400px;
+        left:-400px;
+        
+    }
+  	#key{
+    	position:absolute;
+        
+        float:right;
+        right:20%;
+        top:200px;
+        background:green;        
+    }
+    #blank{
+        background:black;
+        width:0px;
+        height:0px;        
+        padding:100px;
+    }
+    
+    
