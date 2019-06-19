@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project - Front-end Developer</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    #app {
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <h1 class="h5 text-center">Front-end Developer Project</h1>
+
+      <hr>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-primary" onclick="fetch_data()">Fetch</button>
+        <button type="button" class="btn btn-warning" onclick="parse_data()">Parse</button>        
+      </div>
+
+      <hr>
+
+      <h2 class="h5 text-black-50">User Info</h2>
+
+      <dl class="row">
+
+        <!-- This is an example -->
+        <dt class="col-sm-3">First Name</dt>
+        <dd class="col-sm-9"> </dd>
+        <dt class="col-sm-3">Last Name</dt>
+        <dd class="col-sm-9"> </dd>
+        <dt class="col-sm-3">Company</dt>
+        <dd class="col-sm-9"> </dd>
+        <dt class="col-sm-3">Phone</dt>
+        <dd class="col-sm-9">
+          <span style="color:red;"> </span>
+        </dd>
+
+      </dl>
+      
+
+      <hr>
+      
+      
+
+      <h2 class="h5 text-black-50">User List</h2>
+
+      <table class="table table-sm table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- This is an example -->
+         <!--
+          <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td>
+              <a href="#">https://www.google.com</a>
+            </td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm">Detail</button>
+              <button type="button" class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+		-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+<script>
+var dataArr;//global var to store json
+                                 
+function fetch_data(){
+    var xhttp= new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {   
+        if (this.readyState == 4 && this.status == 200) {
+            dataArr=JSON.parse(this.responseText);                
+            for(i=dataArr.length-1;i>=0;i--){
+                var Row = document.createElement("tr");  
+                document.getElementsByTagName("TBODY")[0].appendChild(Row); 
+                var userName = document.createElement("td");//username cell
+                userName.innerHTML=dataArr[i].username;
+                Row.appendChild(userName);    
+                var Name = document.createElement("td");
+                Name.innerHTML=dataArr[i].name;
+                Row.appendChild(Name);             
+                var city = document.createElement("td");
+                city.innerHTML=dataArr[i].address.city;
+                Row.appendChild(city);
+                var email=document.createElement("td");
+                Row.appendChild(email);
+                    var emailLink = document.createElement("a");
+                    emailLink.setAttribute("href","#");
+                    emailLink.innerHTML=dataArr[i].email;
+                email.appendChild(emailLink);
+                var actions = document.createElement("td");//Actions
+                Row.appendChild(actions);
+                    var detail = document.createElement("button");//detail btn
+                    detail.innerHTML="detail";
+                    detail.setAttribute("class","btn btn-info btn-sm");
+                    detail.setAttribute("type","button");
+                    detail.setAttribute("onclick","show_detail("+i+")");//call show_detail() with id no. of the row
+                    actions.appendChild(detail);
+                    var deletebtn = document.createElement("button");//deletebtn
+                    deletebtn.setAttribute("class","btn btn-danger btn-sm");
+                    deletebtn.setAttribute("type","button");
+                    deletebtn.setAttribute("onclick","delete_data(this)");
+                    deletebtn.innerHTML="delete";
+                    actions.appendChild(deletebtn);
+                }
+            }
+        };
+    	xhttp.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+		xhttp.send();
+    }
+function parse_data(){
+	for(var i=0;i<=9;i++){
+    	var username = document.getElementsByTagName("td")[5*i].innerHTML;//there are 5 <td> data each person 
+        document.getElementsByTagName("td")[5*i].innerHTML=username.toLowerCase();
+        document.getElementsByTagName("a")[i].setAttribute("target","_blank");
+        document.getElementsByTagName("a")[i].setAttribute("href","mailto:"+dataArr[i].email);
+    }
+}
+function show_detail(x){
+    var fullName=dataArr[x].name;
+    var index=fullName.indexOf(" "); 
+    var phone=dataArr[x].phone;
+    document.getElementsByClassName("col-sm-9")[0].innerHTML=fullName.slice(0,index);//firstName
+    document.getElementsByClassName("col-sm-9")[1].innerHTML=fullName.slice(index+1,fullName.length);//lastName
+    document.getElementsByClassName("col-sm-9")[2].innerHTML=dataArr[x].company.name;//company cell
+    document.getElementsByClassName("col-sm-9")[3].innerHTML=phone;//phone cell
+    if(phone.charAt(0)=='1'){
+        document.getElementsByClassName("col-sm-9")[3].style.color="red";
+    }else{
+        document.getElementsByClassName("col-sm-9")[3].style.color="";//remove color css
+    }
+    
+}
+function delete_data(x){//x is btn element
+    var child = x.parentNode.parentNode;//parentNode:<td>,<td>.parentNode:<tr>
+    child.parentNode.removeChild(child);//remove<tr>  
+}
+</script>
+</body>
+</html>
