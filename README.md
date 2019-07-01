@@ -1,3 +1,4 @@
+<h1>網頁練習作品</h1>
 <h2> <a href="https://tdtb12.github.io/puzzle/">Puzzle </a> </h2>
 <img src="./DemoPic/puzzle001.JPG"></img>
 練習的作品，使用CSS切割左方圖片並隨機放置，一格為空並放置在按鈕下方，使用者可移動相鄰的圖片使圖片交換
